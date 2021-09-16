@@ -1,0 +1,60 @@
+{
+    "authorities": {
+        "CLdafypGDs/YKWL0pgAvRv3Rm/aYvYEPR0J3wykd108=": {
+            "primary": {
+                "primary_to_primary": "18.184.149.85:2015",
+                "worker_to_primary": "18.184.149.85:2016"
+            },
+            "stake": 1,
+            "workers": {
+                "0": {
+                    "primary_to_worker": "18.184.149.85:2017",
+                    "transactions": "18.184.149.85:2018",
+                    "worker_to_worker": "18.184.149.85:2019"
+                }
+            }
+        },
+        "Y3HTy0Dzmei+BHPTQv4cNfkIqvRr1U7rBIbVIKjh9J4=": {
+            "primary": {
+                "primary_to_primary": "18.139.2.52:2000",
+                "worker_to_primary": "18.139.2.52:2001"
+            },
+            "stake": 1,
+            "workers": {
+                "0": {
+                    "primary_to_worker": "18.139.2.52:2002",
+                    "transactions": "18.139.2.52:2003",
+                    "worker_to_worker": "18.139.2.52:2004"
+                }
+            }
+        },
+        "ZvZOrOwljld/GT3TWpxg5ST2uB41zxplqH/kuL//1lA=": {
+            "primary": {
+                "primary_to_primary": "3.99.12.97:2010",
+                "worker_to_primary": "3.99.12.97:2011"
+            },
+            "stake": 1,
+            "workers": {
+                "0": {
+                    "primary_to_worker": "3.99.12.97:2012",
+                    "transactions": "3.99.12.97:2013",
+                    "worker_to_worker": "3.99.12.97:2014"
+                }
+            }
+        },
+        "xADp8x2VVdphxF1IWTiI7dlUvnFltCoOlrmo3BTQHgU=": {
+            "primary": {
+                "primary_to_primary": "54.248.44.19:2005",
+                "worker_to_primary": "54.248.44.19:2006"
+            },
+            "stake": 1,
+            "workers": {
+                "0": {
+                    "primary_to_worker": "54.248.44.19:2007",
+                    "transactions": "54.248.44.19:2008",
+                    "worker_to_worker": "54.248.44.19:2009"
+                }
+            }
+        }
+    }
+}

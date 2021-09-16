@@ -1,37 +1,60 @@
-# Tusk
+# Narwhal and Tusk
 
-#### 介绍
-https://github.com/facebookresearch/narwhal   "Narwhal and Tusk"
+[![build status](https://img.shields.io/github/workflow/status/facebookresearch/narwhal/Rust/master?style=flat-square&logo=github)](https://github.com/facebookresearch/narwhal/actions)
+[![rustc](https://img.shields.io/badge/rustc-1.51+-blue?style=flat-square&logo=rust)](https://www.rust-lang.org)
+[![license](https://img.shields.io/badge/license-Apache-blue.svg?style=flat-square)](LICENSE)
 
-#### 软件架构
-软件架构说明
+This repo provides an implementation of [Narwhal and Tusk](https://arxiv.org/pdf/2105.11827.pdf). The codebase has been designed to be small, efficient, and easy to benchmark and modify. It has not been designed to run in production but uses real cryptography ([dalek](https://doc.dalek.rs/ed25519_dalek)), networking ([tokio](https://docs.rs/tokio)), and storage ([rocksdb](https://docs.rs/rocksdb)).
 
+## Quick Start
+The core protocols are written in Rust, but all benchmarking scripts are written in Python and run with [Fabric](http://www.fabfile.org/).
+To deploy and benchmark a testbed of 4 nodes on your local machine, clone the repo and install the python dependencies:
+```
+$ git clone https://github.com/facebookresearch/narwhal.git
+$ cd narwhal/benchmark
+$ pip install -r requirements.txt
+```
+You also need to install Clang (required by rocksdb) and [tmux](https://linuxize.com/post/getting-started-with-tmux/#installing-tmux) (which runs all nodes and clients in the background). Finally, run a local benchmark using fabric:
+```
+$ fab local
+```
+This command may take a long time the first time you run it (compiling rust code in `release` mode may be slow) and you can customize a number of benchmark parameters in `fabfile.py`. When the benchmark terminates, it displays a summary of the execution similarly to the one below.
+```
+-----------------------------------------
+ SUMMARY:
+-----------------------------------------
+ + CONFIG:
+ Faults: 0 node(s)
+ Committee size: 4 node(s)
+ Worker(s) per node: 1 worker(s)
+ Collocate primary and workers: True
+ Input rate: 50,000 tx/s
+ Transaction size: 512 B
+ Execution time: 19 s
 
-#### 安装教程
+ Header size: 1,000 B
+ Max header delay: 100 ms
+ GC depth: 50 round(s)
+ Sync retry delay: 10,000 ms
+ Sync retry nodes: 3 node(s)
+ batch size: 500,000 B
+ Max batch delay: 100 ms
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+ + RESULTS:
+ Consensus TPS: 46,478 tx/s
+ Consensus BPS: 23,796,531 B/s
+ Consensus latency: 464 ms
 
-#### 使用说明
+ End-to-end TPS: 46,149 tx/s
+ End-to-end BPS: 23,628,541 B/s
+ End-to-end latency: 557 ms
+-----------------------------------------
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## Next Steps
+The next step is to read the paper [Narwhal and Tusk: A DAG-based Mempool and Efficient BFT Consensus](https://arxiv.org/pdf/2105.11827.pdf). It is then recommended to have a look at the README files of the [worker](https://github.com/facebookresearch/narwhal/tree/master/worker) and [primary](https://github.com/facebookresearch/narwhal/tree/master/primary) crates. An additional resource to better understand the Tusk consensus protocol is the paper [All You Need is DAG](https://arxiv.org/abs/2102.08325) as it describes a similar protocol. 
 
-#### 参与贡献
+The README file of the [benchmark folder](https://github.com/facebookresearch/narwhal/tree/master/benchmark) explains how to benchmark the codebase and read benchmarks' results. It also provides a step-by-step tutorial to run benchmarks on [Amazon Web Services (AWS)](https://aws.amazon.com) accross multiple data centers (WAN).
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## License
+This software is licensed as [Apache 2.0](LICENSE).
