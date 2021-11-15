@@ -253,7 +253,7 @@ class Bench:
                     rate,
                     [x for y in workers_addresses for _, x in y]
                 )
-                Print.info(f'client cmd is {cmd}')
+                Print.info(f'{cmd}')
                 log_file = PathMaker.client_log_file(i, id)
                 self._background_run(host, cmd, log_file)
 
@@ -268,6 +268,7 @@ class Bench:
                 PathMaker.parameters_file(),
                 debug=debug
             )
+            Print.info(f'primary cmd is {cmd}')
             log_file = PathMaker.primary_log_file(i)
             self._background_run(host, cmd, log_file)
 
@@ -284,6 +285,7 @@ class Bench:
                     id,  # The worker's id.
                     debug=debug
                 )
+                Print.info(f'worker cmd is {cmd}')
                 log_file = PathMaker.worker_log_file(i, id)
                 self._background_run(host, cmd, log_file)
 
