@@ -206,7 +206,7 @@ class Bench:
                 t = threading.Thread(target = self.upload, args = (ip,i))
                 t.start()
                 threads.append(t)
-                #self.upload()
+                # self.upload()
                 # c = Connection(ip, user='ubuntu', connect_kwargs=self.connect)
                 # c.run(f'{CommandMaker.cleanup()} || true', hide=True)
                 # c.put(PathMaker.committee_file(), '.')
@@ -225,6 +225,7 @@ class Bench:
 
     def _run_single(self, rate, committee, bench_parameters, debug=False):
         faults = bench_parameters.faults
+        clients = bench_parameters.clients
 
         # Kill any potentially unfinished run and delete logs.
         hosts = committee.ips()
@@ -233,17 +234,19 @@ class Bench:
         # Run the clients (they will wait for the nodes to be ready).
         # Filter all faulty nodes from the client addresses (or they will wait
         # for the faulty nodes to be online).
-        Print.info('Booting clients...')
+        Print.info(f'Booting {clients} clients...')
         workers_addresses = committee.workers_addresses(faults)
-        rate_share = ceil(rate / committee.workers())
-        for i, addresses in enumerate(workers_addresses):
+        clients_workers_addresses = workers_addresses[:clients]
+        rate_share = ceil(rate/clients)
+
+        for i, addresses in enumerate(clients_workers_addresses):
             for (id, address) in addresses:
                 host = Committee.ip(address)
                 cmd = CommandMaker.run_client(
                     address,
                     bench_parameters.tx_size,
                     rate_share,
-                    [x for y in workers_addresses for _, x in y]
+                    [x for y in clients_workers_addresses for _, x in y]
                 )
                 log_file = PathMaker.client_log_file(i, id)
                 self._background_run(host, cmd, log_file)

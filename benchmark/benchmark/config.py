@@ -206,6 +206,8 @@ class BenchParameters:
             
             self.workers = int(json['workers'])
 
+            self.clients = int(json['clients'])
+
             if 'collocate' in json:
                 self.collocate = bool(json['collocate'])
             else:

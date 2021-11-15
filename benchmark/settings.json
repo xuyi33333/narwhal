@@ -3,10 +3,10 @@
         "name": "aws",
         "path": "/root/.ssh/aws"
     },
-    "port": 2000,
+    "port": 5000,
     "repo": {
         "name": "narwhal",
-        "url": "https://github.com/facebookresearch/narwhal",
+        "url": "https://gitee.com/xubangbang/narwhal.git",
         "branch": "master"
     },
     "instances": {

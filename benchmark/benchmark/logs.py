@@ -131,6 +131,9 @@ class LogParser:
         }
 
         ip = search(r'booted on (\d+.\d+.\d+.\d+)', log).group(1)
+
+        f = open("../commits.log", 'a')
+        Print.info(f'{ip} -> proposals: {len(proposals)} , commits: {len(commits)} ', file = f)
         
         return proposals, commits, configs, ip
 
