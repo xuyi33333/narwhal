@@ -121,7 +121,7 @@ impl Proposer {
             
             if (timer_expired || enough_digests) && enough_parents {
                 
-                debug!("the batches' digests size {} in header ", self.payload_size)              
+                debug!("the batches' digests size {} in header ", self.payload_size);             
 
                 // Make a new header.
                 self.make_header().await;

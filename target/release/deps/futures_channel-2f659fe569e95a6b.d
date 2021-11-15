@@ -1,0 +1,12 @@
+/root/narwhal/target/release/deps/futures_channel-2f659fe569e95a6b.rmeta: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/lock.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/mod.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/queue.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/sink_impl.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/oneshot.rs
+
+/root/narwhal/target/release/deps/libfutures_channel-2f659fe569e95a6b.rlib: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/lock.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/mod.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/queue.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/sink_impl.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/oneshot.rs
+
+/root/narwhal/target/release/deps/futures_channel-2f659fe569e95a6b.d: /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/lib.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/lock.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/mod.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/queue.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/sink_impl.rs /root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/oneshot.rs
+
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/lib.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/lock.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/mod.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/queue.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/mpsc/sink_impl.rs:
+/root/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-channel-0.3.17/src/oneshot.rs:
