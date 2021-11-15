@@ -87,10 +87,10 @@ impl BatchMaker {
                 // If the timer triggers, seal the batch even if it contains few transactions.
                 () = &mut timer => {
                     if !self.current_batch.is_empty() {
-                        debug!("current batch size is {}", self.current_batch_size)
+                        debug!("current batch size is {}", self.current_batch_size);
                         self.seal().await;
                     } else {
-                        debug!("current batch is empty")
+                        debug!("current batch is empty");
                     }
                     timer.as_mut().reset(Instant::now() + Duration::from_millis(self.max_batch_delay));
                 }
