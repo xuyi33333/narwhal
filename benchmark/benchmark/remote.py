@@ -236,18 +236,24 @@ class Bench:
         # for the faulty nodes to be online).
         Print.info(f'Booting {clients} clients...')
         workers_addresses = committee.workers_addresses(faults)
-        clients_workers_addresses = workers_addresses[:clients]
+        
         rate_share = ceil(rate/clients)
 
-        for i, addresses in enumerate(clients_workers_addresses):
+        for i, addresses in enumerate(workers_addresses):
+            if (i < clients):
+                rate = rate_share
+            else:
+                rate = 0
+            Print.info(f'Booting {i} client, rate is {rate}...')
             for (id, address) in addresses:
                 host = Committee.ip(address)
                 cmd = CommandMaker.run_client(
                     address,
                     bench_parameters.tx_size,
-                    rate_share,
-                    [x for y in clients_workers_addresses for _, x in y]
+                    rate,
+                    [x for y in workers_addresses for _, x in y]
                 )
+                Print.info(f'client cmd is {cmd}')
                 log_file = PathMaker.client_log_file(i, id)
                 self._background_run(host, cmd, log_file)
 
