@@ -23,11 +23,11 @@ HOST_CXXFLAGS = None
 CXXFLAGS = None
 CRATE_CC_NO_DEFAULTS = None
 CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
-running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "rocksdb/include/" "-I" "rocksdb/" "-I" "rocksdb/third-party/gtest-1.8.1/fused-src/" "-I" "snappy/" "-I" "lz4/lib/" "-I" "zstd/lib/" "-I" "zstd/lib/dictBuilder/" "-I" "zlib/" "-I" "bzip2/" "-I" "." "-Wall" "-Wextra" "-std=c++11" "-Wno-unused-parameter" "-msse2" "-DSNAPPY=1" "-DLZ4=1" "-DZSTD=1" "-DZLIB=1" "-DBZIP2=1" "-DNDEBUG=1" "-DOS_LINUX" "-DROCKSDB_PLATFORM_POSIX" "-DROCKSDB_LIB_IO_POSIX" "-DROCKSDB_SUPPORT_THREAD_LOCAL" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/rocksdb/cache/lru_cache.o" "-c" "rocksdb/cache/lru_cache.cc"
 running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "rocksdb/include/" "-I" "rocksdb/" "-I" "rocksdb/third-party/gtest-1.8.1/fused-src/" "-I" "snappy/" "-I" "lz4/lib/" "-I" "zstd/lib/" "-I" "zstd/lib/dictBuilder/" "-I" "zlib/" "-I" "bzip2/" "-I" "." "-Wall" "-Wextra" "-std=c++11" "-Wno-unused-parameter" "-msse2" "-DSNAPPY=1" "-DLZ4=1" "-DZSTD=1" "-DZLIB=1" "-DBZIP2=1" "-DNDEBUG=1" "-DOS_LINUX" "-DROCKSDB_PLATFORM_POSIX" "-DROCKSDB_LIB_IO_POSIX" "-DROCKSDB_SUPPORT_THREAD_LOCAL" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/rocksdb/cache/cache.o" "-c" "rocksdb/cache/cache.cc"
 running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "rocksdb/include/" "-I" "rocksdb/" "-I" "rocksdb/third-party/gtest-1.8.1/fused-src/" "-I" "snappy/" "-I" "lz4/lib/" "-I" "zstd/lib/" "-I" "zstd/lib/dictBuilder/" "-I" "zlib/" "-I" "bzip2/" "-I" "." "-Wall" "-Wextra" "-std=c++11" "-Wno-unused-parameter" "-msse2" "-DSNAPPY=1" "-DLZ4=1" "-DZSTD=1" "-DZLIB=1" "-DBZIP2=1" "-DNDEBUG=1" "-DOS_LINUX" "-DROCKSDB_PLATFORM_POSIX" "-DROCKSDB_LIB_IO_POSIX" "-DROCKSDB_SUPPORT_THREAD_LOCAL" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/rocksdb/cache/clock_cache.o" "-c" "rocksdb/cache/clock_cache.cc"
-running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "rocksdb/include/" "-I" "rocksdb/" "-I" "rocksdb/third-party/gtest-1.8.1/fused-src/" "-I" "snappy/" "-I" "lz4/lib/" "-I" "zstd/lib/" "-I" "zstd/lib/dictBuilder/" "-I" "zlib/" "-I" "bzip2/" "-I" "." "-Wall" "-Wextra" "-std=c++11" "-Wno-unused-parameter" "-msse2" "-DSNAPPY=1" "-DLZ4=1" "-DZSTD=1" "-DZLIB=1" "-DBZIP2=1" "-DNDEBUG=1" "-DOS_LINUX" "-DROCKSDB_PLATFORM_POSIX" "-DROCKSDB_LIB_IO_POSIX" "-DROCKSDB_SUPPORT_THREAD_LOCAL" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/rocksdb/cache/sharded_cache.o" "-c" "rocksdb/cache/sharded_cache.cc"
+running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "rocksdb/include/" "-I" "rocksdb/" "-I" "rocksdb/third-party/gtest-1.8.1/fused-src/" "-I" "snappy/" "-I" "lz4/lib/" "-I" "zstd/lib/" "-I" "zstd/lib/dictBuilder/" "-I" "zlib/" "-I" "bzip2/" "-I" "." "-Wall" "-Wextra" "-std=c++11" "-Wno-unused-parameter" "-msse2" "-DSNAPPY=1" "-DLZ4=1" "-DZSTD=1" "-DZLIB=1" "-DBZIP2=1" "-DNDEBUG=1" "-DOS_LINUX" "-DROCKSDB_PLATFORM_POSIX" "-DROCKSDB_LIB_IO_POSIX" "-DROCKSDB_SUPPORT_THREAD_LOCAL" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/rocksdb/cache/lru_cache.o" "-c" "rocksdb/cache/lru_cache.cc"
 exit status: 0
+running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "rocksdb/include/" "-I" "rocksdb/" "-I" "rocksdb/third-party/gtest-1.8.1/fused-src/" "-I" "snappy/" "-I" "lz4/lib/" "-I" "zstd/lib/" "-I" "zstd/lib/dictBuilder/" "-I" "zlib/" "-I" "bzip2/" "-I" "." "-Wall" "-Wextra" "-std=c++11" "-Wno-unused-parameter" "-msse2" "-DSNAPPY=1" "-DLZ4=1" "-DZSTD=1" "-DZLIB=1" "-DBZIP2=1" "-DNDEBUG=1" "-DOS_LINUX" "-DROCKSDB_PLATFORM_POSIX" "-DROCKSDB_LIB_IO_POSIX" "-DROCKSDB_SUPPORT_THREAD_LOCAL" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/rocksdb/cache/sharded_cache.o" "-c" "rocksdb/cache/sharded_cache.cc"
 running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "rocksdb/include/" "-I" "rocksdb/" "-I" "rocksdb/third-party/gtest-1.8.1/fused-src/" "-I" "snappy/" "-I" "lz4/lib/" "-I" "zstd/lib/" "-I" "zstd/lib/dictBuilder/" "-I" "zlib/" "-I" "bzip2/" "-I" "." "-Wall" "-Wextra" "-std=c++11" "-Wno-unused-parameter" "-msse2" "-DSNAPPY=1" "-DLZ4=1" "-DZSTD=1" "-DZLIB=1" "-DBZIP2=1" "-DNDEBUG=1" "-DOS_LINUX" "-DROCKSDB_PLATFORM_POSIX" "-DROCKSDB_LIB_IO_POSIX" "-DROCKSDB_SUPPORT_THREAD_LOCAL" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/rocksdb/db/arena_wrapped_db_iter.o" "-c" "rocksdb/db/arena_wrapped_db_iter.cc"
 exit status: 0
 running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "rocksdb/include/" "-I" "rocksdb/" "-I" "rocksdb/third-party/gtest-1.8.1/fused-src/" "-I" "snappy/" "-I" "lz4/lib/" "-I" "zstd/lib/" "-I" "zstd/lib/dictBuilder/" "-I" "zlib/" "-I" "bzip2/" "-I" "." "-Wall" "-Wextra" "-std=c++11" "-Wno-unused-parameter" "-msse2" "-DSNAPPY=1" "-DLZ4=1" "-DZSTD=1" "-DZLIB=1" "-DBZIP2=1" "-DNDEBUG=1" "-DOS_LINUX" "-DROCKSDB_PLATFORM_POSIX" "-DROCKSDB_LIB_IO_POSIX" "-DROCKSDB_SUPPORT_THREAD_LOCAL" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/rocksdb/db/blob/blob_file_addition.o" "-c" "rocksdb/db/blob/blob_file_addition.cc"
@@ -607,9 +607,10 @@ CXXFLAGS = None
 CRATE_CC_NO_DEFAULTS = None
 DEBUG = Some("false")
 CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
+running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "snappy/" "-I" "." "-Wall" "-std=c++11" "-DNDEBUG=1" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/snappy/snappy.o" "-c" "snappy/snappy.cc"
 running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "snappy/" "-I" "." "-Wall" "-std=c++11" "-DNDEBUG=1" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/snappy/snappy-sinksource.o" "-c" "snappy/snappy-sinksource.cc"
 running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "snappy/" "-I" "." "-Wall" "-std=c++11" "-DNDEBUG=1" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/snappy/snappy-c.o" "-c" "snappy/snappy-c.cc"
-running: "c++" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "snappy/" "-I" "." "-Wall" "-std=c++11" "-DNDEBUG=1" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/snappy/snappy.o" "-c" "snappy/snappy.cc"
+exit status: 0
 exit status: 0
 cargo:warning=snappy/snappy.cc: In member function ‘void snappy::SnappySinkAllocator::Flush(size_t)’:
 cargo:warning=snappy/snappy.cc:1598:23: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<snappy::SnappySinkAllocator::Datablock>::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
@@ -627,7 +628,6 @@ cargo:warning=      |                             ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
 cargo:warning=snappy/snappy-stubs-internal.h:104:32: note: in definition of macro ‘SNAPPY_PREDICT_TRUE’
 cargo:warning=  104 | #define SNAPPY_PREDICT_TRUE(x) x
 cargo:warning=      |                                ^
-exit status: 0
 exit status: 0
 AR_x86_64-unknown-linux-gnu = None
 AR_x86_64_unknown_linux_gnu = None
@@ -658,10 +658,10 @@ CFLAGS = None
 CRATE_CC_NO_DEFAULTS = None
 DEBUG = Some("false")
 CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
-running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wextra" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/lz4/lib/xxhash.o" "-c" "lz4/lib/xxhash.c"
-running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wextra" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/lz4/lib/lz4.o" "-c" "lz4/lib/lz4.c"
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wextra" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/lz4/lib/lz4hc.o" "-c" "lz4/lib/lz4hc.c"
+running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wextra" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/lz4/lib/xxhash.o" "-c" "lz4/lib/xxhash.c"
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wextra" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/lz4/lib/lz4frame.o" "-c" "lz4/lib/lz4frame.c"
+running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wextra" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/lz4/lib/lz4.o" "-c" "lz4/lib/lz4.c"
 exit status: 0
 exit status: 0
 exit status: 0
@@ -691,8 +691,8 @@ CRATE_CC_NO_DEFAULTS = None
 DEBUG = Some("false")
 CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-Wall" "-DZSTD_LIB_DEPRECATED=0" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zstd/lib/common/fse_decompress.o" "-c" "zstd/lib/common/fse_decompress.c"
-running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-Wall" "-DZSTD_LIB_DEPRECATED=0" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zstd/lib/common/pool.o" "-c" "zstd/lib/common/pool.c"
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-Wall" "-DZSTD_LIB_DEPRECATED=0" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zstd/lib/common/entropy_common.o" "-c" "zstd/lib/common/entropy_common.c"
+running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-Wall" "-DZSTD_LIB_DEPRECATED=0" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zstd/lib/common/pool.o" "-c" "zstd/lib/common/pool.c"
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-Wall" "-DZSTD_LIB_DEPRECATED=0" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zstd/lib/common/error_private.o" "-c" "zstd/lib/common/error_private.c"
 exit status: 0
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-I" "zstd/lib/" "-I" "zstd/lib/common" "-I" "zstd/lib/legacy" "-Wall" "-DZSTD_LIB_DEPRECATED=0" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zstd/lib/common/threading.o" "-c" "zstd/lib/common/threading.c"
@@ -780,10 +780,10 @@ HOST_CFLAGS = None
 CFLAGS = None
 CRATE_CC_NO_DEFAULTS = None
 CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
-running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wno-implicit-function-declaration" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zlib/crc32.o" "-c" "zlib/crc32.c"
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wno-implicit-function-declaration" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zlib/compress.o" "-c" "zlib/compress.c"
-running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wno-implicit-function-declaration" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zlib/adler32.o" "-c" "zlib/adler32.c"
+running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wno-implicit-function-declaration" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zlib/crc32.o" "-c" "zlib/crc32.c"
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wno-implicit-function-declaration" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zlib/deflate.o" "-c" "zlib/deflate.c"
+running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wno-implicit-function-declaration" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zlib/adler32.o" "-c" "zlib/adler32.c"
 exit status: 0
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-Wno-implicit-function-declaration" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/zlib/gzclose.o" "-c" "zlib/gzclose.c"
 exit status: 0
@@ -834,10 +834,10 @@ CFLAGS = None
 CRATE_CC_NO_DEFAULTS = None
 DEBUG = Some("false")
 CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
-running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/bzip2/crctable.o" "-c" "bzip2/crctable.c"
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/bzip2/bzlib.o" "-c" "bzip2/bzlib.c"
-running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/bzip2/compress.o" "-c" "bzip2/compress.c"
 running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/bzip2/blocksort.o" "-c" "bzip2/blocksort.c"
+running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/bzip2/crctable.o" "-c" "bzip2/crctable.c"
+running: "cc" "-O3" "-ffunction-sections" "-fdata-sections" "-fPIC" "-m64" "-Wall" "-D_FILE_OFFSET_BITS=64" "-DBZ_NO_STDIO" "-o" "/root/narwhal/target/release/build/librocksdb-sys-9a57a66395ef5099/out/bzip2/compress.o" "-c" "bzip2/compress.c"
 cargo:warning=bzip2/compress.c: In function ‘sendMTFValues’:
 cargo:warning=bzip2/compress.c:243:19: warning: variable ‘nBytes’ set but not used [-Wunused-but-set-variable]
 cargo:warning=  243 |    Int32 nGroups, nBytes;

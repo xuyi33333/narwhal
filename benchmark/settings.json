@@ -7,7 +7,7 @@
     "repo": {
         "name": "narwhal",
         "url": "https://gitee.com/xubangbang/narwhal.git",
-        "branch": "master"
+        "branch": "test"
     },
     "instances": {
         "type": "t3.2xlarge",

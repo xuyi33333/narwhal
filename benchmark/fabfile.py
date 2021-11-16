@@ -96,23 +96,23 @@ def remote(ctx, debug=True):
     ''' Run benchmarks on AWS '''
     bench_params = {
         'faults': 0,
-        'nodes': [4],
+        'nodes': [10],
         'workers': 1,
         'collocate': True,
-        'rate':[800],
+        'rate':[10],
         'tx_size': 1000,
-        'duration': 20,
+        'duration': 60,
         'runs': 1,
-        'clients': 4
+        'clients': 10
     }
     node_params = {
-        'header_size': 1_000,  # bytes
-        'max_header_delay': 200,  # ms
+        'header_size': 32,  # bytes
+        'max_header_delay': 10_000,  # ms
         'gc_depth': 50,  # rounds
         'sync_retry_delay': 10_000,  # ms
         'sync_retry_nodes': 3,  # number of nodes
-        'batch_size':1_000_000,  # bytes
-        'max_batch_delay': 100  # ms
+        'batch_size':1_000,  # bytes
+        'max_batch_delay': 10_000  # ms
     }
     try:
         Bench(ctx).run(bench_params, node_params, debug)
