@@ -38,16 +38,6 @@ class LogParser:
             = zip(*results)
         self.misses = sum(misses)
 
-        # Parse the primaries logs.
-        try:
-            with Pool() as p:
-                results = p.map(self._parse_primaries, primaries)
-        except (ValueError, IndexError, AttributeError) as e:
-            raise ParseError(f'Failed to parse nodes\' logs: {e}')
-        proposals, commits, self.configs, primary_ips = zip(*results)
-        self.proposals = self._merge_results([x.items() for x in proposals])
-        self.commits = self._merge_results([x.items() for x in commits])
-
         # Parse the workers logs.
         try:
             with Pool() as p:
@@ -55,6 +45,18 @@ class LogParser:
         except (ValueError, IndexError, AttributeError) as e:
             raise ParseError(f'Failed to parse workers\' logs: {e}')
         sizes, self.received_samples, workers_ips = zip(*results)
+        self.sizes = sizes
+
+        # Parse the primaries logs.
+        try:
+            with Pool() as p:
+                results = p.map(self._parse_primaries, primaries)
+        except (ValueError, IndexError, AttributeError) as e:
+            raise ParseError(f'Failed to parse nodes\' logs: {e}')
+        proposals, commits, self.configs, primary_ips = zip(*results)
+        
+        self.proposals = self._merge_results([x.items() for x in proposals])
+        self.commits = self._merge_results([x.items() for x in commits])
         self.sizes = {
             k: v for x in sizes for k, v in x.items() if k in self.commits
         }
@@ -131,9 +133,14 @@ class LogParser:
         }
 
         ip = search(r'booted on (\d+.\d+.\d+.\d+)', log).group(1)
-
-        with open("../commits.log", 'a') as f:
-             print(f'{ip} -> proposals: {len(proposals)} , commits: {len(commits)} ', file = f)
+        
+        self_committed_keys = proposals.keys() & commits.keys()
+        batch_size = {
+             k: v for x in self.sizes for k, v in x.items() if k in self_committed_keys
+        }
+        txs = sum(batch_size.values()) / self.size[0]
+        with open("./commits.log", 'a') as f:
+            print(f'{ip} -> proposals: {len(proposals)}, total commits: {len(commits)}, self committed proposals: {len(proposals.keys() & commits.keys())}, self committed txs: {txs}  ', file = f)
         
         return proposals, commits, configs, ip
 
