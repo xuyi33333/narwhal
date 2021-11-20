@@ -56,7 +56,7 @@ def destroy(ctx):
 
 
 @task
-def start(ctx, max=2):
+def start(ctx, max=3):
     ''' Start at most `max` machines per data center '''
     try:
         InstanceManager.make().start_instances(max)
@@ -99,12 +99,12 @@ def remote(ctx, debug=True):
         'nodes': [10],
         'workers': 1,
         'collocate': True,
-        'rate':[200],
+        'rate':[50_000, 100_000, 200_000],
         'tx_size': 1000,
-        'duration': 30,
+        'duration': 60,
         'runs': 1,
         'clients': 10
-    }
+        }
     node_params = {
         'header_size': 32,  # bytes
         'max_header_delay': 100,  # ms
