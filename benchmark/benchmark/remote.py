@@ -99,16 +99,24 @@ class Bench:
         # Collocate the primary and its workers on the same machine.
         if bench_parameters.collocate:
             nodes = max(bench_parameters.nodes)
+            print("the selects hosts ")
+            print(nodes)
 
             # Ensure there are enough hosts.
             hosts = self.manager.hosts()
+            print("hosts")
+            print(hosts)
             if sum(len(x) for x in hosts.values()) < nodes:
                 return []
-
+            
             # Select the hosts in different data centers.
-            ordered = zip(*hosts.values())
-            ordered = [x for y in ordered for x in y]
-            return ordered[:nodes]
+            order = []
+            for x in hosts.values():
+                for y in x:
+                    order.append(y)
+
+            print(order)
+            return order
 
         # Spawn the primary and each worker on a different machine. Each
         # authority runs in a single data center.
@@ -142,6 +150,8 @@ class Bench:
             ips = list(set(hosts))
         else:
             ips = list(set([x for y in hosts for x in y]))
+
+        print(ips)    
 
         Print.info(
             f'Updating {len(ips)} machines (branch "{self.settings.branch}")...'
@@ -358,11 +368,11 @@ class Bench:
             return
 
         # Update nodes.
-        try:
-            self._update(selected_hosts, bench_parameters.collocate)
-        except (GroupException, ExecutionError) as e:
-            e = FabricError(e) if isinstance(e, GroupException) else e
-            raise BenchError('Failed to update nodes', e)
+        # try:
+        #     self._update(selected_hosts, bench_parameters.collocate)
+        # except (GroupException, ExecutionError) as e:
+        #     e = FabricError(e) if isinstance(e, GroupException) else e
+        #     raise BenchError('Failed to update nodes', e)
 
         # Upload all configuration files.
         try:

@@ -1,6 +1,7 @@
 # Copyright(C) Facebook, Inc. and its affiliates.
 from json import dump, load
 from collections import OrderedDict
+from os import path
 
 
 class ConfigError(Exception):
@@ -62,6 +63,8 @@ class Committee:
 
         port = base_port
         self.json = {'authorities': OrderedDict()}
+        print("len(addresses is " )
+        print(len(addresses))
         for name, hosts in addresses.items():
             host = hosts.pop(0)
             primary_addr = {
@@ -90,6 +93,8 @@ class Committee:
         assert faults < self.size()
         addresses = []
         good_nodes = self.size() - faults
+        print("len(good nodes) is ")
+        print(good_nodes)
         for authority in list(self.json['authorities'].values())[:good_nodes]:
             addresses += [authority['primary']['primary_to_primary']]
         return addresses
@@ -99,6 +104,8 @@ class Committee:
         assert faults < self.size()
         addresses = []
         good_nodes = self.size() - faults
+        print("len(good nodes) is " )
+        print(good_nodes)
         for authority in list(self.json['authorities'].values())[:good_nodes]:
             authority_addresses = []
             for id, worker in authority['workers'].items():
@@ -190,8 +197,10 @@ class BenchParameters:
     def __init__(self, json):
         try:
             self.faults = int(json['faults'])
+            
 
             nodes = json['nodes']
+            print(nodes)
             nodes = nodes if isinstance(nodes, list) else [nodes]
             if not nodes or any(x <= 1 for x in nodes):
                 raise ConfigError('Missing or invalid number of nodes')
@@ -203,10 +212,11 @@ class BenchParameters:
                 raise ConfigError('Missing input rate')
             self.rate = [int(x) for x in rate]
 
-            
             self.workers = int(json['workers'])
 
             self.clients = int(json['clients'])
+            print("len(clients) is ")
+            print(self.clients)
 
             if 'collocate' in json:
                 self.collocate = bool(json['collocate'])
