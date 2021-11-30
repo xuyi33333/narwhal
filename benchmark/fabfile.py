@@ -56,7 +56,7 @@ def destroy(ctx):
 
 
 @task
-def start(ctx, max=20):
+def start(ctx, max=1):
     ''' Start at most `max` machines per data center '''
     try:
         InstanceManager.make().start_instances(max)
@@ -99,7 +99,7 @@ def remote(ctx, debug=True):
         'nodes': [4],
         'workers': 1,
         'collocate': True,
-        'rate':[45_000],
+        'rate':[4],
         'tx_size': 1000,
         'duration': 30,
         'runs': 1,
@@ -111,8 +111,8 @@ def remote(ctx, debug=True):
         'gc_depth': 50,  # rounds
         'sync_retry_delay': 10_000,  # ms
         'sync_retry_nodes': 3,  # number of nodes
-        'batch_size': 1_000_000,  # bytes
-        'max_batch_delay': 100  # ms
+        'batch_size': 1_000,  # bytes
+        'max_batch_delay': 1000  # ms
     }
     try:
         Bench(ctx).run(bench_params, node_params, debug)

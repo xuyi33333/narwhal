@@ -17,7 +17,7 @@ class AWSError(Exception):
 
 
 class InstanceManager:
-    INSTANCE_NAME = 'tusk'
+    INSTANCE_NAME = 'narwhal'
     SECURITY_GROUP_NAME = 'dag'
 
     def __init__(self, settings):
