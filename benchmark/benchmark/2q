@@ -1,3 +1,4 @@
+# Copyright(C) Facebook, Inc. and its affiliates.
 from datetime import datetime
 from glob import glob
 from multiprocessing import Pool
@@ -132,27 +133,23 @@ class LogParser:
         }
 
         ip = search(r'booted on (\d+.\d+.\d+.\d+)', log).group(1)
-        self_committed_keys = proposals.keys() & commits.keys()
-
-        self_commits = {
-           k: v for k,v in commits.items() if k in self_committed_keys
-        }
-     
+        
+       # print(len(self_commits))
         local_latency = []
         for sent, received in zip(self.sent_samples, self.received_samples):
             for tx_id, batch_id in received.items():
-                if batch_id in self_commits:
+                if batch_id in commits:
                     assert tx_id in sent  # We receive txs that we sent.
                     start = sent[tx_id]
-                    end = self_commits[batch_id]
+                    end = commits[batch_id]
                     local_latency += [end-start]
-        #local_latency.sort()
-        #percentile_95th = round(len(local_latency)/100 * 95)
+        local_latency.sort()
+        percentile_95th = round(len(local_latency)/100 * 95)
         
-        #print(f'{ip} : the 95th percentile number is {percentile_95th}')
-        #print(f'{ip} : the 95th percentile latency is {local_latency[percentile_95th-1]* 1000}')
-        print(f'{ip} : the aver latency is {mean(local_latency)}')
+        print(f'{ip} : the 95th percentile number is {percentile_95th}')
+        print(f'{ip} : the 95th percentile latency is {local_latency[percentile_95th-1]* 1000}')
 
+        self_committed_keys = proposals.keys() & commits.keys()
         batch_size = {
              k: v for x in self.sizes for k, v in x.items() if k in self_committed_keys
         }
@@ -212,7 +209,11 @@ class LogParser:
                     assert tx_id in sent  # We receive txs that we sent.
                     start = sent[tx_id]
                     end = self.commits[batch_id]
+                    print(tx_id)
+                    print(batch_id)
                     latency += [end-start]
+        print(latency)
+        print(len(latency))
         return mean(latency) if latency else 0
 
     def result(self):
