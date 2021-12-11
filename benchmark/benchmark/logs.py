@@ -146,12 +146,16 @@ class LogParser:
                     start = sent[tx_id]
                     end = self_commits[batch_id]
                     local_latency += [end-start]
-        #local_latency.sort()
-        #percentile_95th = round(len(local_latency)/100 * 95)
+        local_latency.sort()
+        percentile_95th = round(len(local_latency)/100 * 95)
         
         #print(f'{ip} : the 95th percentile number is {percentile_95th}')
-        #print(f'{ip} : the 95th percentile latency is {local_latency[percentile_95th-1]* 1000}')
-        print(f'{ip} : the aver latency is {mean(local_latency)}')
+        print(f'{ip} : the 95th percentile latency is {local_latency[percentile_95th-1]* 1000}')
+        
+        if local_latency :
+            print(f'{ip} : the aver latency is {mean(local_latency)}')
+        
+        print(f'{ip} -> {local_latency}')
 
         batch_size = {
              k: v for x in self.sizes for k, v in x.items() if k in self_committed_keys

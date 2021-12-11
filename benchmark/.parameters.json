@@ -1,5 +1,5 @@
 {
-    "batch_size": 1000,
+    "batch_size": 1000000,
     "gc_depth": 50,
     "header_size": 32,
     "max_batch_delay": 1000,
