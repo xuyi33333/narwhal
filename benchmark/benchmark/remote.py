@@ -99,24 +99,16 @@ class Bench:
         # Collocate the primary and its workers on the same machine.
         if bench_parameters.collocate:
             nodes = max(bench_parameters.nodes)
-            print("the selects hosts ")
-            print(nodes)
 
             # Ensure there are enough hosts.
             hosts = self.manager.hosts()
-            print("hosts")
-            print(hosts)
             if sum(len(x) for x in hosts.values()) < nodes:
                 return []
-            
-            # Select the hosts in different data centers.
-            order = []
-            for x in hosts.values():
-                for y in x:
-                    order.append(y)
 
-            print(order)
-            return order
+            # Select the hosts in different data centers.
+            ordered = zip(*hosts.values())
+            ordered = [x for y in ordered for x in y]
+            return ordered[:nodes]
 
         # Spawn the primary and each worker on a different machine. Each
         # authority runs in a single data center.
@@ -151,15 +143,13 @@ class Bench:
         else:
             ips = list(set([x for y in hosts for x in y]))
 
-        print(ips)    
-
         Print.info(
             f'Updating {len(ips)} machines (branch "{self.settings.branch}")...'
         )
         cmd = [
-           # f'(cd {self.settings.repo_name} && git fetch -f)',
-           # f'(cd {self.settings.repo_name} && git checkout -f {self.settings.branch})',
-           # f'(cd {self.settings.repo_name} && git pull -f)',
+            f'(cd {self.settings.repo_name} && git fetch -f)',
+            f'(cd {self.settings.repo_name} && git checkout -f {self.settings.branch})',
+            f'(cd {self.settings.repo_name} && git pull -f)',
             'source $HOME/.cargo/env',
             f'(cd {self.settings.repo_name}/node && {CommandMaker.compile()})',
             CommandMaker.alias_binaries(
@@ -213,12 +203,12 @@ class Bench:
         progress = progress_bar(names, prefix='Uploading config files:')
         for i, name in enumerate(progress):
             for ip in committee.ips(name):
-                t = threading.Thread(target = self.upload, args = (ip,i))
+                t = threading.Thread(target = self.upload, args = (ip, i))
                 t.start()
                 threads.append(t)
                 # self.upload()
                 # c = Connection(ip, user='ubuntu', connect_kwargs=self.connect)
-                # c.run(f'{CommandMaker.cleanup()} || true', hide=True)
+                # c.run(f'{CommandMaker.cleanup()} || true', hide=Tr     ue)
                 # c.put(PathMaker.committee_file(), '.')
                 # c.put(PathMaker.key_file(i), '.')
                 # c.put(PathMaker.parameters_file(), '.')
@@ -226,13 +216,52 @@ class Bench:
             t.join()
         return committee
 
-    def upload(self,ip,i):
+    def _upload(self, ip, i):
         c = Connection(ip, user='ubuntu', connect_kwargs=self.connect)
         c.run(f'{CommandMaker.cleanup()} || true', hide=True)
         c.put(PathMaker.committee_file(), '.')
         c.put(PathMaker.key_file(i), '.')
-        c.put(PathMaker.parameters_file(), '.')     
+        c.put(PathMaker.parameters_file(), '.')  
 
+    def _client_run(self, address, i, id, tx_size, rate, workers_addresses):
+        host = Committee.ip(address)
+        cmd = CommandMaker.run_client(
+            address,
+            tx_size,
+            rate,
+            [x for y in workers_addresses for _, x in y]
+        )
+        Print.info(f'{cmd}')
+        log_file = PathMaker.client_log_file(i, id)
+        self._background_run(host, cmd, log_file)  
+    
+    def _primary_run(self, address, i, debug):
+        host = Committee.ip(address)
+        cmd = CommandMaker.run_primary(
+                PathMaker.key_file(i),
+                PathMaker.committee_file(),
+                PathMaker.db_path(i),
+                PathMaker.parameters_file(),
+                debug=debug
+            )
+        Print.info(f'{cmd}')
+        log_file = PathMaker.primary_log_file(i)
+        self._background_run(host, cmd, log_file)
+    
+    def _work_run(self, address, i, id, debug):
+        host = Committee.ip(address)
+        cmd = CommandMaker.run_worker(
+            PathMaker.key_file(i),
+            PathMaker.committee_file(),
+            PathMaker.db_path(i, id),
+            PathMaker.parameters_file(),
+            id,  # The worker's id.
+            debug=debug
+        )
+        Print.info(f'{cmd}')
+        log_file = PathMaker.worker_log_file(i, id)
+        self._background_run(host, cmd, log_file)
+       
     def _run_single(self, rate, committee, bench_parameters, debug=False):
         faults = bench_parameters.faults
         clients = bench_parameters.clients
@@ -244,60 +273,76 @@ class Bench:
         # Run the clients (they will wait for the nodes to be ready).
         # Filter all faulty nodes from the client addresses (or they will wait
         # for the faulty nodes to be online).
-        Print.info(f'Booting {clients} clients...')
+        Print.info(f'Booting clients...')
         workers_addresses = committee.workers_addresses(faults)
-        
         rate_share = ceil(rate/clients)
-
+        threads = []
         for i, addresses in enumerate(workers_addresses):
             if (i < clients):
                 rate = rate_share
             else:
                 rate = 0
-            Print.info(f'Booting {i} client, rate is {rate}...')
             for (id, address) in addresses:
-                host = Committee.ip(address)
-                cmd = CommandMaker.run_client(
-                    address,
-                    bench_parameters.tx_size,
-                    rate,
-                    [x for y in workers_addresses for _, x in y]
-                )
-                Print.info(f'{cmd}')
-                log_file = PathMaker.client_log_file(i, id)
-                self._background_run(host, cmd, log_file)
+                # host = Committee.ip(address)
+                # cmd = CommandMaker.run_client(
+                #     address,
+                #     bench_parameters.tx_size,
+                #     rate,
+                #     [x for y in workers_addresses for _, x in y]
+                # )
+                # Print.info(f'{cmd}')
+                # log_file = PathMaker.client_log_file(i, id)
+                # self._background_run(host, cmd, log_file)
+                t = threading.Thread(target = self.client_run, args = (address, i, id, bench_parameters.tx_size, rate, workers_addresses))
+                t.start()
+                threads.append(t)
+        for t in threads:
+            t.join()
+        
 
         # Run the primaries (except the faulty ones).
+        threads = []
         Print.info('Booting primaries...')
         for i, address in enumerate(committee.primary_addresses(faults)):
-            host = Committee.ip(address)
-            cmd = CommandMaker.run_primary(
-                PathMaker.key_file(i),
-                PathMaker.committee_file(),
-                PathMaker.db_path(i),
-                PathMaker.parameters_file(),
-                debug=debug
-            )
-            Print.info(f'primary cmd is {cmd}')
-            log_file = PathMaker.primary_log_file(i)
-            self._background_run(host, cmd, log_file)
+            # host = Committee.ip(address)
+            # cmd = CommandMaker.run_primary(
+            #     PathMaker.key_file(i),
+            #     PathMaker.committee_file(),
+            #     PathMaker.db_path(i),
+            #     PathMaker.parameters_file(),
+            #     debug=debug
+            # )
+            # Print.info(f'primary cmd is {cmd}')
+            # log_file = PathMaker.primary_log_file(i)
+            # self._background_run(host, cmd, log_file)
+            t = threading.Thread(target = self.primary_run, args = (address, i, debug))
+            t.start()
+            threads.append(t)
+        for t in threads:
+            t.join()
 
         # Run the workers (except the faulty ones).
+        threads = []
         Print.info('Booting workers...')
         for i, addresses in enumerate(workers_addresses):
             for (id, address) in addresses:
-                host = Committee.ip(address)
-                cmd = CommandMaker.run_worker(
-                    PathMaker.key_file(i),
-                    PathMaker.committee_file(),
-                    PathMaker.db_path(i, id),
-                    PathMaker.parameters_file(),
-                    id,  # The worker's id.
-                    debug=debug
-                )
-                Print.info(f'worker cmd is {cmd}')
-                log_file = PathMaker.worker_log_file(i, id)
-                self._background_run(host, cmd, log_file)
+                # host = Committee.ip(address)
+                # cmd = CommandMaker.run_worker(
+                #     PathMaker.key_file(i),
+                #     PathMaker.committee_file(),
+                #     PathMaker.db_path(i, id),
+                #     PathMaker.parameters_file(),
+                #     id,  # The worker's id.
+                #     debug=debug
+                # )
+                # Print.info(f'worker cmd is {cmd}')
+                # log_file = PathMaker.worker_log_file(i, id)
+                # self._background_run(host, cmd, log_file)
+                t = threading.Thread(target = self.worker_run, args = (address, address, i, id, debug))
+                t.start()
+                threads.append(t)
+        for t in threads:
+            t.join()
 
         # Wait for all transactions to be processed.
         duration = bench_parameters.duration
@@ -311,20 +356,27 @@ class Bench:
         subprocess.run([cmd], shell=True, stderr=subprocess.DEVNULL)
 
         # Download log files.
+        threads = []
         workers_addresses = committee.workers_addresses(faults)
         progress = progress_bar(workers_addresses, prefix='Downloading workers logs:')
         for i, addresses in enumerate(progress):
             for id, address in addresses:
-                host = Committee.ip(address)
-                c = Connection(host, user='ubuntu', connect_kwargs=self.connect)
-                c.get(
-                    PathMaker.client_log_file(i, id), 
-                    local=PathMaker.client_log_file(i, id)
-                )
-                c.get(
-                    PathMaker.worker_log_file(i, id), 
-                    local=PathMaker.worker_log_file(i, id)
-                )
+                # host = Committee.ip(address)
+                # c = Connection(host, user='ubuntu', connect_kwargs=self.connect)
+                # c.get(
+                #     PathMaker.client_log_file(i, id), 
+                #     local=PathMaker.client_log_file(i, id)
+                # )
+                # c.get(
+                #     PathMaker.worker_log_file(i, id), 
+                #     local=PathMaker.worker_log_file(i, id)
+                # )
+                t = threading.Thread(target = self.download_1, args = (address, i, id))
+                t.start()
+                threads.append(t)
+        for t in threads:
+            t.join()
+        
         threads = []
         primary_addresses = committee.primary_addresses(faults)
         progress = progress_bar(primary_addresses, prefix='Downloading primaries logs:')
@@ -335,7 +387,7 @@ class Bench:
             #     PathMaker.primary_log_file(i), 
             #     local=PathMaker.primary_log_file(i)
             # )
-            t = threading.Thread(target = self.download, args = (address,i))
+            t = threading.Thread(target = self.download_2, args = (address, i))
             t.start()
             threads.append(t)
         for t in threads:
@@ -343,8 +395,21 @@ class Bench:
         # Parse logs and return the parser.
         Print.info('Parsing logs and computing performance...')
         return LogParser.process(PathMaker.logs_path(), faults=faults)
+    
+    def download_1(self, address, i, id):
+        host = Committee.ip(address)
+        c = Connection(host, user='ubuntu', connect_kwargs=self.connect)
+        c.get(
+            PathMaker.client_log_file(i, id), 
+            local=PathMaker.client_log_file(i, id)
+        )
+        c.get(
+            PathMaker.worker_log_file(i, id), 
+            local=PathMaker.worker_log_file(i, id)
+        )
 
-    def download(self,address,i):
+
+    def download_2(self, address, i):
         host = Committee.ip(address)
         c = Connection(host, user='ubuntu', connect_kwargs=self.connect)
         c.get(
