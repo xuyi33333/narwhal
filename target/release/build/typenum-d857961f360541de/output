@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/root/narwhal/target/release/build/typenum-d857961f360541de/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/root/narwhal/target/release/build/typenum-d857961f360541de/out/op.rs

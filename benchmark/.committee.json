@@ -1,142 +1,142 @@
 {
     "authorities": {
-        "1dT+6LBJdZaVM/6NBtgmflsFmJgFwCROR2k8D3jPE3w=": {
+        "34epQX/ujKqtgvGkPW7/fNwIcDjzaIjibqN1vtpCkzU=": {
             "primary": {
-                "primary_to_primary": "3.0.183.185:5030",
-                "worker_to_primary": "3.0.183.185:5031"
+                "primary_to_primary": "54.248.168.131:5010",
+                "worker_to_primary": "54.248.168.131:5011"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "3.0.183.185:5032",
-                    "transactions": "3.0.183.185:5033",
-                    "worker_to_worker": "3.0.183.185:5034"
+                    "primary_to_worker": "54.248.168.131:5012",
+                    "transactions": "54.248.168.131:5013",
+                    "worker_to_worker": "54.248.168.131:5014"
                 }
             }
         },
-        "RWMBTa313K3vNMLSHbjVXMdK2FeHxTewMhZZU2Mp9wc=": {
+        "AFRIKbxbY3jgSGHeysxUlvlJPgkGWu9a/dsghc5RX1c=": {
             "primary": {
-                "primary_to_primary": "13.212.254.180:5005",
-                "worker_to_primary": "13.212.254.180:5006"
+                "primary_to_primary": "3.121.225.109:5045",
+                "worker_to_primary": "3.121.225.109:5046"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "13.212.254.180:5007",
-                    "transactions": "13.212.254.180:5008",
-                    "worker_to_worker": "13.212.254.180:5009"
+                    "primary_to_worker": "3.121.225.109:5047",
+                    "transactions": "3.121.225.109:5048",
+                    "worker_to_worker": "3.121.225.109:5049"
                 }
             }
         },
-        "Tf79xJNKFmVOScN7M5AuWXg/iIraJiacO/h8BivHVNA=": {
+        "TKLq/5SwKyoJYCbbFFKnCJNCGyt29XpWGE9Yrc3mU+k=": {
             "primary": {
-                "primary_to_primary": "3.65.1.17:5020",
-                "worker_to_primary": "3.65.1.17:5021"
+                "primary_to_primary": "3.96.45.55:5015",
+                "worker_to_primary": "3.96.45.55:5016"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "3.65.1.17:5022",
-                    "transactions": "3.65.1.17:5023",
-                    "worker_to_worker": "3.65.1.17:5024"
+                    "primary_to_worker": "3.96.45.55:5017",
+                    "transactions": "3.96.45.55:5018",
+                    "worker_to_worker": "3.96.45.55:5019"
                 }
             }
         },
-        "cxQVS/Dl53+mqlaxLoQFNApRDyMzXfLqA+m9DbU55Rc=": {
+        "Up3DO7obnXcvwtkZd3S+TTsxn2lI3DAX6O3RseoY6AE=": {
             "primary": {
-                "primary_to_primary": "3.144.111.198:5000",
-                "worker_to_primary": "3.144.111.198:5001"
+                "primary_to_primary": "13.215.162.183:5005",
+                "worker_to_primary": "13.215.162.183:5006"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "3.144.111.198:5002",
-                    "transactions": "3.144.111.198:5003",
-                    "worker_to_worker": "3.144.111.198:5004"
+                    "primary_to_worker": "13.215.162.183:5007",
+                    "transactions": "13.215.162.183:5008",
+                    "worker_to_worker": "13.215.162.183:5009"
                 }
             }
         },
-        "mxNnFIkiN6nYvYr5UEGAeR5Bmmw2gPq0llvpgLLVSMk=": {
+        "nyq05hs/yKFMMnur6aprOK32WrutxGXoV41jLy2jErY=": {
             "primary": {
-                "primary_to_primary": "3.96.219.230:5040",
-                "worker_to_primary": "3.96.219.230:5041"
+                "primary_to_primary": "18.218.57.81:5000",
+                "worker_to_primary": "18.218.57.81:5001"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "3.96.219.230:5042",
-                    "transactions": "3.96.219.230:5043",
-                    "worker_to_worker": "3.96.219.230:5044"
+                    "primary_to_worker": "18.218.57.81:5002",
+                    "transactions": "18.218.57.81:5003",
+                    "worker_to_worker": "18.218.57.81:5004"
                 }
             }
         },
-        "s9Dnm6XTFHjnQIIhSk1HXgY7JY8FaIekilavHMH/B+k=": {
+        "rtED87K72iT5vguoUXSlp5Zef0vVQp35WoAe4n2KIKA=": {
             "primary": {
-                "primary_to_primary": "35.75.0.62:5035",
-                "worker_to_primary": "35.75.0.62:5036"
+                "primary_to_primary": "18.191.246.174:5025",
+                "worker_to_primary": "18.191.246.174:5026"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "35.75.0.62:5037",
-                    "transactions": "35.75.0.62:5038",
-                    "worker_to_worker": "35.75.0.62:5039"
+                    "primary_to_worker": "18.191.246.174:5027",
+                    "transactions": "18.191.246.174:5028",
+                    "worker_to_worker": "18.191.246.174:5029"
                 }
             }
         },
-        "t/oiRk9ebbKufHH//f8M0G5XxnDuuxBFCeQY17M7dSE=": {
+        "thVKAi60V/m5eN5kNbHZKXLk8+/om5gHX6kDdkR1+t0=": {
             "primary": {
-                "primary_to_primary": "3.126.249.249:5045",
-                "worker_to_primary": "3.126.249.249:5046"
+                "primary_to_primary": "13.231.255.49:5035",
+                "worker_to_primary": "13.231.255.49:5036"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "3.126.249.249:5047",
-                    "transactions": "3.126.249.249:5048",
-                    "worker_to_worker": "3.126.249.249:5049"
+                    "primary_to_worker": "13.231.255.49:5037",
+                    "transactions": "13.231.255.49:5038",
+                    "worker_to_worker": "13.231.255.49:5039"
                 }
             }
         },
-        "uewZkw4xZp2czpeDS7P20flUdvg7AwcOPAaYWYlqqqA=": {
+        "vuqBLb2N6N7G3YRzyUOGvpsc3DJ0TNBAhUrrf1/35fs=": {
             "primary": {
-                "primary_to_primary": "18.177.121.249:5010",
-                "worker_to_primary": "18.177.121.249:5011"
+                "primary_to_primary": "15.223.30.146:5040",
+                "worker_to_primary": "15.223.30.146:5041"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "18.177.121.249:5012",
-                    "transactions": "18.177.121.249:5013",
-                    "worker_to_worker": "18.177.121.249:5014"
+                    "primary_to_worker": "15.223.30.146:5042",
+                    "transactions": "15.223.30.146:5043",
+                    "worker_to_worker": "15.223.30.146:5044"
                 }
             }
         },
-        "xUGKL0hhXqz4P8NRldN4rc0M0ph4E4/6qG0wLaIxi4A=": {
+        "x8vaYXy4/g2hFN1LNlPWLU5h6Pq7YbAS7tqb/FTIOEk=": {
             "primary": {
-                "primary_to_primary": "3.96.58.163:5015",
-                "worker_to_primary": "3.96.58.163:5016"
+                "primary_to_primary": "18.192.178.84:5020",
+                "worker_to_primary": "18.192.178.84:5021"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "3.96.58.163:5017",
-                    "transactions": "3.96.58.163:5018",
-                    "worker_to_worker": "3.96.58.163:5019"
+                    "primary_to_worker": "18.192.178.84:5022",
+                    "transactions": "18.192.178.84:5023",
+                    "worker_to_worker": "18.192.178.84:5024"
                 }
             }
         },
-        "xXMHN3p4B9nRX/ZW4fsKq78pgVVwshDkQjILJgVRJSg=": {
+        "xsdt1cA+8K2NA0LDMmzcXPGSmWuiAnQwpFwBbcnx8+c=": {
             "primary": {
-                "primary_to_primary": "3.15.33.222:5025",
-                "worker_to_primary": "3.15.33.222:5026"
+                "primary_to_primary": "54.254.213.36:5030",
+                "worker_to_primary": "54.254.213.36:5031"
             },
             "stake": 1,
             "workers": {
                 "0": {
-                    "primary_to_worker": "3.15.33.222:5027",
-                    "transactions": "3.15.33.222:5028",
-                    "worker_to_worker": "3.15.33.222:5029"
+                    "primary_to_worker": "54.254.213.36:5032",
+                    "transactions": "54.254.213.36:5033",
+                    "worker_to_worker": "54.254.213.36:5034"
                 }
             }
         }
